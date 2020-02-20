@@ -1,14 +1,26 @@
-import { Request, Response } from 'express'
+import { Request, Response /* NextFunction */ } from "express"
 
-import { Rule } from './rules.interface'
+import RulesService from "./rules.service"
 
-export default class RulesController {
+class RulesController {
   public async addRule(req: Request, res: Response) {
-    const rule: Rule = req.body
+    try {
+      const { addRule } = RulesService
 
-    res.status(201).send({
-      status: res.statusCode,
-      message: `New rule added!`,
-    })
+      const { statusCode, message } = await addRule(req.body)
+
+      res.status(statusCode).send({
+        statusCode,
+        message
+      })
+    } catch ({ message }) {
+      res.status(500).send({
+        statusCode: res.statusCode,
+        error: "Internal Server Error",
+        message
+      })
+    }
   }
 }
+
+export default new RulesController()

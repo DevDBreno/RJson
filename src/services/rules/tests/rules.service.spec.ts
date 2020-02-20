@@ -1,21 +1,21 @@
-import RulesService from '../rules.service'
+import RulesService from "../rules.service"
 
-import { ICreateRule } from '../rules.interface'
-import { IStoreIDs } from '../../../helpers/helpers.interface'
+import { ICreateRule } from "../rules.interface"
+import { IStoreIDs } from "../../../helpers/helpers.interface"
 
-describe('RulesService', () => {
+describe("RulesService", () => {
   const storeIDs: IStoreIDs = {
-    specificId: '',
-    weeklyId: '',
-    dailyId: '',
+    specificId: "",
+    weeklyId: "",
+    dailyId: ""
   }
 
-  it('Should Create a Specific Rule', async () => {
+  it("Should Create a Specific Rule", async () => {
     const { addRule } = RulesService
 
     const specificRule: ICreateRule = {
-      attendaceDay: '2020/12/03',
-      intervals: [{ start: '16:30', end: '17:30' }],
+      attendaceDay: "2020/12/03",
+      intervals: [{ start: "16:30", end: "17:30" }]
     }
 
     const {
@@ -25,21 +25,21 @@ describe('RulesService', () => {
 
     const expectPayload = {
       statusCode: 201,
-      message: 'new rule created',
-      rule: specificRule,
+      message: "new rule created",
+      rule: specificRule
     }
 
     const payloadTest = {
       ...responseToTest,
-      rule: { ...dataToTest },
+      rule: { ...dataToTest }
     }
 
-    storeIDs['specificId'] = _id
+    storeIDs["specificId"] = _id
 
     expect(expectPayload).toEqual(payloadTest)
   })
 
-  it('Should Find a Specific Rule', async () => {
+  it("Should Find a Specific Rule", async () => {
     const { specificId } = storeIDs
 
     console.log(specificId)
