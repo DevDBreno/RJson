@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "target": "ES2018",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "removeComments": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "removeComments": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["./node_modules/**/*", "./src/**/*.spec.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/**/*", "dist"]
 }
