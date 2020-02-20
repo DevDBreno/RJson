@@ -1,6 +1,9 @@
-# Personalized
-src/services/json/data.json
+# Custom
 dist
+
+# Json files
+src/services/json/database.test.json
+src/services/json/database.json
 
 # Logs
 logs
