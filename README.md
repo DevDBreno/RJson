@@ -22,6 +22,13 @@
 
     3. Inside the directory: type "yarn install" or "npm install"
 
+		4. 		Start app: "yarn start:dev" or "npm run start:dev"	 (development mode)
+		4.1.	Start app: "yarn start:prod" or "npm run start:prod" (production mod)
+
+		OR
+
+    4.2. Run tests: "yarn test" & "npm test" (incomplete)
+
 <!-- ### Estrutura dos arquivos e pastas:
 
 ![Estrutura dos arquivos e pastas](https://s3.amazonaws.com/befunkyanonymous/ANdmLgl-156635192340632.jpg) -->
