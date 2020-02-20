@@ -1,5 +1,5 @@
-import JoiBase from "@hapi/joi"
-import JoiDate from "@hapi/joi-date"
+import JoiBase from '@hapi/joi'
+import JoiDate from '@hapi/joi-date'
 
 const Joi = JoiBase.extend(JoiDate)
 
@@ -9,9 +9,9 @@ export const rulesSchema = Joi.object({
       Joi.array()
         .items(Joi.string())
         .min(1),
-      Joi.string().equal("daily"),
+      Joi.string().equal('daily'),
       Joi.date()
-        .format("YYYY/MM/DD")
+        .format('YYYY/MM/DD')
         .raw()
     )
     .required(),
@@ -19,11 +19,11 @@ export const rulesSchema = Joi.object({
     .items(
       Joi.object({
         start: Joi.date()
-          .format("HH:mm")
+          .format('HH:mm')
           .raw()
           .required(),
         end: Joi.date()
-          .format("HH:mm")
+          .format('HH:mm')
           .raw()
           .required()
       })

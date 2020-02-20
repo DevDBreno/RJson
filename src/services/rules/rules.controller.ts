@@ -1,9 +1,9 @@
-import { Request, Response /* NextFunction */ } from "express"
+import { Request, Response /* NextFunction */ } from 'express'
 
-import RulesService from "./rules.service"
+import RulesService from './rules.service'
 
 class RulesController {
-  public async addRule(req: Request, res: Response) {
+  public async addRule (req: Request, res: Response) {
     try {
       const { addRule } = RulesService
 
@@ -16,7 +16,7 @@ class RulesController {
     } catch ({ message }) {
       res.status(500).send({
         statusCode: res.statusCode,
-        error: "Internal Server Error",
+        error: 'Internal Server Error',
         message
       })
     }
