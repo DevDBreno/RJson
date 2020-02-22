@@ -1,6 +1,6 @@
 type Interval = {
-  start: string
-  end: string
+	start: string
+	end: string
 }
 
 // export interface InitialFinal {
@@ -9,12 +9,9 @@ type Interval = {
 // }
 
 export interface IRule {
-  _id: string
-  attendaceDay: string | string[]
-  intervals: Interval[]
-}
-
-export interface ICreateRule {
-  attendaceDay: string | string[]
-  intervals: Interval[]
+	_id: string
+	attendaceDay: string | string[]
+	intervals: Interval[]
+	weekdays: string | string[]
+	ruleType: string
 }

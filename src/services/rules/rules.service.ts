@@ -1,53 +1,37 @@
-// import format from "date-fns/format";
-import uuid from 'uuid/v4'
+import JsonService from '../json/json.service'
+import { rulesConstructor } from '../../helpers/helpers.rules'
 
-// import { isDate, isString } from "util";
-
-import { ICreateRule, IRule } from './rules.interface'
-
-import { rulesSchema } from '../../helpers/helpers.joi'
-import { IPayload /* ServiceOptions */ } from '../../helpers/helpers.interface'
-// import JsonService from "../json/json.service"
+import { IPayload } from '../../helpers/helpers.interface'
 
 class RulesService {
-  public async addRule (
-    _rule: ICreateRule
-    // options: ServiceOptions = {}
-  ): Promise<IPayload> {
-    try {
-      // const jsonService = new JsonService(options)
-      const rule: IRule = await rulesSchema.validateAsync(_rule)
+	public async addRule(_rule: object): Promise<IPayload> {
+		try {
+			const rule = await rulesConstructor(_rule)
 
-      // const { attendaceDay } = _rule
+			// Sync save
+			JsonService.save(rule)
 
-      // if (isDate(new Date(attendaceDay))) {
-      //   console.log(``)
-      // } else if (isString(attendaceDay)) {
-      //   console.log(``)
-      // } else {
-      //   console.log(``)
-      // }
+			// Successfully payload
+			return { statusCode: 201, error: null, message: 'New Rule Successfully Created', data: rule }
+		} catch ({ message }) {
+			// Unccessfully payload
+			return { statusCode: 400, error: 'Bad Request', message, data: null }
+		}
+	}
+	public findRule(id: string) {
+		return JsonService.rules.find(({ _id }) => _id === id)
+	}
+	public deleteRule(id: string): IPayload {
+		const rules = JsonService.rules.filter(({ _id }) => _id !== id)
 
-      rule._id = uuid()
+		if (!this.findRule(id)) {
+			return { statusCode: 400, error: 'Bad Request', message: 'Rule Not Found', data: null }
+		}
 
-      const { _id } = rule
+		JsonService.save(rules)
 
-      const response: IPayload = {
-        statusCode: 201,
-        message: 'new rule created',
-        _id
-      }
-
-      return { _id, ...response }
-    } catch ({ message }) {
-      const response: IPayload = {
-        statusCode: 400,
-        message
-      }
-
-      return response
-    }
-  }
+		return { statusCode: 200, error: null, message: 'Rule Deleted Successfully', data: null }
+	}
 }
 
 export default new RulesService()
