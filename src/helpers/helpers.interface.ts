@@ -1,15 +1,12 @@
-export interface IPayload {
-  statusCode: number
-  message: string
-  _id?: string
-}
+import { IRule } from '../services/rules/rules.interface'
 
-export interface IStoreIDs {
-  specificId?: string
-  weeklyId?: string
-  dailyId?: string
+export interface IPayload {
+	statusCode: number
+	error: string | null
+	message: string
+	data?: IRule
 }
 
 export interface ServiceOptions {
-  isTest?: boolean
+	isTest?: boolean
 }
