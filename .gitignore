@@ -1,9 +1,9 @@
 # Custom
 dist
 
-# Json files
-src/services/json/database.test.json
-src/services/json/database.json
+# Json Database
+src/services/json/database
+
 
 # Logs
 logs
@@ -66,3 +66,5 @@ typings/
 
 # next.js build output
 .next
+
+yarn.lock
