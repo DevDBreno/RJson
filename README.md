@@ -15,10 +15,7 @@
     Express.js 		(v4.17.1)
 
 ## Usage
-
-```
-Postman Collection: https://www.getpostman.com/collections/9159a08abf90f0edca66
-```
+[Postman Collection](https://www.getpostman.com/collections/9159a08abf90f0edca66)
 
 ## Installation
 
